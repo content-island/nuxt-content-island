@@ -1,0 +1,57 @@
+{
+  "name": "@content-island/nuxt",
+  "version": "0.0.0",
+  "description": "Content Island - Nuxt module",
+  "private": false,
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.umd.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@content-island/api-client": "^0.7.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3",
+    "pretty-quick": "^4.2.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/content-island/nuxt-content-island.git"
+  },
+  "keywords": [
+    "content-island",
+    "nuxt",
+    "module",
+    "content",
+    "island"
+  ],
+  "author": "Lemoncode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/content-island/nuxt-content-island/issues"
+  },
+  "homepage": "https://github.com/content-island/nuxt-content-island#readme"
+}
