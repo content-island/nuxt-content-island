@@ -44,8 +44,7 @@
     "nuxt": "^3.17.5",
     "prettier": "^3.5.3",
     "pretty-quick": "^4.2.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.3"
+    "typescript": "^5.8.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
