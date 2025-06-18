@@ -46,13 +46,6 @@ const { data: post } = await useAsyncData<Post>(`post-${slug}`, async () => {
     'fields.slug': slug,
   });
 
-  if (!foundPost) {
-    throw createError({
-      statusCode: 404,
-      message: `Post with slug "${slug}" not found`,
-    });
-  }
-
   return {
     ...foundPost,
     content: await marked(foundPost.content || ''),

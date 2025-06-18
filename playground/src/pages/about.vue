@@ -13,12 +13,15 @@
 
 <script setup lang="ts">
 import { marked } from 'marked';
-import type { About } from '~/types';
+import type { About } from '~/api.models';
 
 const { $contentIsland } = useNuxtApp();
 
 const { data: about } = await useAsyncData(async () => {
-  const about = await $contentIsland.getContent<About>({ contentType: 'about', 'fields.fullname': 'John Doe' });
+  const about = await $contentIsland.getContent<About>({
+    contentType: 'about',
+    'fields.fullname': 'John Doe',
+  });
   return {
     ...about,
     extendedBio: marked(about.extendedBio || ''),
