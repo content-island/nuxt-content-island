@@ -11,15 +11,10 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url);
-    if (!options.accessToken) {
-      throw new Error(
-        'Content Island token is not provided. Please set the' +
-          ' CONTENT_ISLAND_ACCESS_TOKEN environment variable in a `.env` file' +
-          ' in the root of your project OR add it in the' +
-          ' nuxt.config file under the `contentIsland.accessToken` option.'
-      );
-    }
-    nuxt.options.runtimeConfig.public.contentIsland = options;
+    // Module options only available in the server side config to keep the accessToken private
+    // nuxt.options.runtimeConfig -> private runtime config
+    // nuxt.options.runtimeConfig.public -> public runtime config
+    nuxt.options.runtimeConfig.contentIsland = options;
     addPlugin(resolve('./runtime/plugin'));
   },
 });

@@ -3,14 +3,14 @@
     <nav class="menu">
       <ul>
         <li>
-          <a href="/" class="menu__item"> CurioVerso </a>
+          <NuxtLink to="/" class="menu__item">CurioVerso</NuxtLink>
         </li>
         <div class="menu__right">
           <li>
-            <a href="/" class="menu__item"> All Post </a>
+            <NuxtLink to="/" class="menu__item">All Post</NuxtLink>
           </li>
           <li>
-            <a href="/about/" class="menu__item"> About </a>
+            <NuxtLink to="/about" class="menu__item">About</NuxtLink>
           </li>
         </div>
       </ul>
