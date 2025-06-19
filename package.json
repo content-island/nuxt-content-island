@@ -29,7 +29,9 @@
     "start": "npm run start:playground",
     "start:playground": "nuxi dev playground",
     "build": "nuxt-module-build build",
-    "test": "vitest -c ./config/test/config.ts",
+    "publish-packages": "changeset publish",
+    "prelocal:publish": "npm run build && cd ./local-npm-registry && npm start",
+    "local:publish": "changeset version && node local-npm-registry/publish.js changeset publish",
     "prepare": "nuxt-module-build prepare && husky || echo 'Husky is not installed'"
   },
   "dependencies": {
