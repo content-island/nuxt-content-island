@@ -5,7 +5,7 @@ uplinks:
     url: https://registry.npmjs.org/
 
 packages:
-  '@content-island/**':
+  '@content-island/nuxt':
     access: $anonymous
     publish: $anonymous
   '**':
