@@ -1,0 +1,13 @@
+{
+  "name": "nuxt-content-island-playground",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12"
+  }
+}

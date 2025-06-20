@@ -1,0 +1,26 @@
+name: Packages's Version Changeset
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  publish-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.x
+
+      - name: Install
+        run: npm ci
+
+      - name: Add/Update PR with new versions
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
