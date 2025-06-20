@@ -1,0 +1,72 @@
+{
+  "name": "@content-island/nuxt",
+  "version": "0.0.0",
+  "description": "Content Island - Nuxt module",
+  "private": false,
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "module": "./dist/module.mjs",
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "scripts": {
+    "start": "npm run start:playground",
+    "start:playground": "nuxi dev playground",
+    "build": "nuxt-module-build build",
+    "changeset": "changeset",
+    "publish-packages": "changeset publish",
+    "prelocal:publish": "npm run build && cd ./local-npm-registry && npm start",
+    "local:publish": "changeset version && node local-npm-registry/publish.js changeset publish",
+    "prepare": "nuxt-module-build prepare && husky || echo 'Husky is not installed'"
+  },
+  "dependencies": {
+    "@content-island/api-client": "^0.8.0",
+    "@nuxt/kit": "^3.17.5"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.4",
+    "@nuxt/module-builder": "^1.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "nuxt": "^3.17.5",
+    "prettier": "^3.5.3",
+    "pretty-quick": "^4.2.2",
+    "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/content-island/nuxt-content-island.git"
+  },
+  "keywords": [
+    "content-island",
+    "nuxt",
+    "module",
+    "content",
+    "island"
+  ],
+  "author": "Lemoncode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/content-island/nuxt-content-island/issues"
+  },
+  "homepage": "https://github.com/content-island/nuxt-content-island#readme"
+}
