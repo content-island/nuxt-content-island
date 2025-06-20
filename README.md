@@ -48,13 +48,14 @@ After installation and configuration, the module injects a client instance into 
 <script setup lang="ts">
 import { marked } from 'marked';
 import { useRoute, useNuxtApp, useAsyncData } from '#imports';
+import type { Post } from '~/api.models';
 
 const { $contentIsland } = useNuxtApp();
 const route = useRoute();
 const slug = route.params.slug as string;
 
 const { data: post } = await useAsyncData(`post-${slug}`, async () => {
-  const foundPost = await $contentIsland.getContent({
+  const foundPost = await $contentIsland.getContent<Post>({
     contentType: 'post',
     'fields.slug': slug,
   });
