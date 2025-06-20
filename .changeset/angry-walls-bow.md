@@ -6,7 +6,7 @@ Initial Release
 
 - Description:
 
-  This release marks the first version of the @content-island/nuxt package. Its goal is to provide an integrated solution for managing and displaying content in Nuxt.js applications, making it easier to integrate Content Island.
+  The Nuxt Content Island Module provides a seamless integration between your Nuxt application and the [Content Island API](https://contentisland.net/). This module simplifies fetching and managing content stored in Content Island, allowing you to focus on crafting rich and dynamic user experiences without the hassle of complex backend integrations.
 
 - Key Features:
 
