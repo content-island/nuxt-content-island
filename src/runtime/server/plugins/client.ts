@@ -1,12 +1,12 @@
 import { useRuntimeConfig } from '#imports';
-import { createClient, type ApiClient } from '@content-island/api-client';
+import { createClient, type ApiClient, type Options } from '@content-island/api-client';
 
 let client: ApiClient;
 export const getContentIslandClient = () => {
   if (client) return client;
 
   const config = useRuntimeConfig();
-  const options = config.contentIsland;
+  const options = config.contentIsland as Options;
 
   if (!options?.accessToken) {
     console.error(

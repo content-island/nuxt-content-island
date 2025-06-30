@@ -13,7 +13,7 @@
   "types": "./dist/types.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/types.d.mts",
+      "types": "./dist/types.d.*",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -33,7 +33,8 @@
     "publish-packages": "changeset publish",
     "prelocal:publish": "npm run build && cd ./local-npm-registry && npm start",
     "local:publish": "changeset version && node local-npm-registry/publish.js changeset publish",
-    "prepare": "nuxt-module-build prepare && husky || echo 'Husky is not installed'"
+    "prepare": "nuxt-module-build prepare && husky || echo 'Husky is not installed'",
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@content-island/api-client": "^0.8.0",
@@ -47,7 +48,8 @@
     "nuxt": "^3.17.5",
     "prettier": "^3.5.3",
     "pretty-quick": "^4.2.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.10"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
