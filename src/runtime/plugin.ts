@@ -1,23 +1,42 @@
-import { defineNuxtPlugin, useRuntimeConfig } from '#app';
-import { createClient } from '@content-island/api-client';
-import type { ModuleOptions } from '../models';
+import { defineNuxtPlugin } from '#app';
+import type { ApiClient, Project, QueryParams } from '@content-island/api-client';
+
+// Local Model type for generics (not exported)
+type Model<Language = string> = {
+  id: string;
+  language?: Language;
+};
 
 export default defineNuxtPlugin(() => {
-  const config = useRuntimeConfig();
-  const options = config.contentIsland as ModuleOptions;
-  if (!options?.accessToken) {
-    console.error(
-      'Content Island token is not provided. Please set the' +
-        ' CONTENT_ISLAND_ACCESS_TOKEN environment variable in a `.env` file' +
-        ' in the root of your project OR add it in the' +
-        ' nuxt.config file under the `contentIsland.accessToken` option.'
-    );
-  }
-  const client = createClient(options);
+  const proxyClient: ApiClient = {
+    getContent: async <M extends Model = Model & Record<string, any>>(query: QueryParams<M>) => {
+      return $fetch<M>(`/api/__content_island/content`, {
+        query: { ...query, raw: 'false' },
+      }) satisfies ReturnType<ApiClient['getContent']>;
+    },
+    getContentList: async <M extends Model = Model & Record<string, any>>(query?: QueryParams<M>) => {
+      return $fetch<M[]>(`/api/__content_island/contentlist`, {
+        query: { ...query, raw: 'false' },
+      }) satisfies ReturnType<ApiClient['getContentList']>;
+    },
+    getRawContent: async <M extends Model = Model & Record<string, any>>(query: QueryParams<M>) => {
+      return $fetch(`/api/__content_island/content`, {
+        query: { ...query, raw: 'true' },
+      }) satisfies ReturnType<ApiClient['getRawContent']>;
+    },
+    getRawContentList: async <M extends Model = Model & Record<string, any>>(query?: QueryParams<M>) => {
+      return $fetch(`/api/__content_island/contentlist`, {
+        query: { ...query, raw: 'true' },
+      }) satisfies ReturnType<ApiClient['getRawContentList']>;
+    },
+    getProject: async (): Promise<Project> => {
+      return $fetch('/api/__content_island/project');
+    },
+  };
 
   return {
     provide: {
-      contentIsland: client,
+      contentIsland: proxyClient,
     },
   };
 });
