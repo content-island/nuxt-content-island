@@ -1,4 +1,5 @@
 import { addPlugin, addServerHandler, createResolver, defineNuxtModule } from '@nuxt/kit';
+import { SERVER_API_ROUTES } from './constants';
 import type { ModuleOptions } from './models';
 
 export default defineNuxtModule<ModuleOptions>({
@@ -19,15 +20,23 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Register server handlers
     addServerHandler({
-      route: '/api/__content_island/content',
+      route: SERVER_API_ROUTES.CONTENT,
       handler: resolve('./runtime/server/api/content.get'),
     });
     addServerHandler({
-      route: '/api/__content_island/contentlist',
-      handler: resolve('./runtime/server/api/contentlist.get'),
+      route: SERVER_API_ROUTES.RAW_CONTENT,
+      handler: resolve('./runtime/server/api/raw-content.get'),
     });
     addServerHandler({
-      route: '/api/__content_island/project',
+      route: SERVER_API_ROUTES.CONTENT_LIST,
+      handler: resolve('./runtime/server/api/content-list.get'),
+    });
+    addServerHandler({
+      route: SERVER_API_ROUTES.RAW_CONTENT_LIST,
+      handler: resolve('./runtime/server/api/raw-content-list.get'),
+    });
+    addServerHandler({
+      route: SERVER_API_ROUTES.PROJECT,
       handler: resolve('./runtime/server/api/project.get'),
     });
 

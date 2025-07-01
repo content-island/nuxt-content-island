@@ -3,7 +3,6 @@ import { getContentIslandClient } from '../plugins/client';
 
 export default defineEventHandler(async () => {
   const client = getContentIslandClient();
-  const project = await client.getProject();
 
-  return project;
+  return await client.getProject();
 });
