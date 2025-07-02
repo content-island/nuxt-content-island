@@ -100,6 +100,8 @@ A fully functional example is provided in the `playground` directory. The exampl
 To run the example:
 
 ```sh
+npm install && cd playground && npm install
+cd ..
 npm start
 ```
 

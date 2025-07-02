@@ -26,7 +26,6 @@
     }
   },
   "scripts": {
-    "postinstall": "cd playground && npm ci",
     "start": "npm run start:playground",
     "start:playground": "nuxi dev playground",
     "build": "nuxt-module-build build",
