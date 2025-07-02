@@ -1,8 +1,8 @@
 import { defineNuxtPlugin } from '#app';
 import type { ApiClient, QueryParams } from '@content-island/api-client';
-import { SERVER_API_ROUTES } from '../constants';
-import { mapQueryParamsToString } from '../mappers';
-import type { $FetchOptions } from '../models';
+import { SERVER_API_ROUTES } from './constants';
+import { mapQueryParamsToString } from './mappers';
+import type { $FetchOptions } from './models';
 
 const fetchContentIsland = async (path: string, queryParams?: QueryParams): Promise<any> => {
   const options: $FetchOptions = queryParams

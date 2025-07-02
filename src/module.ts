@@ -1,6 +1,6 @@
 import { addPlugin, addServerHandler, createResolver, defineNuxtModule } from '@nuxt/kit';
-import { SERVER_API_PATHS, SERVER_API_ROUTES } from './constants';
-import type { ModuleOptions } from './models';
+import { SERVER_API_PATHS, SERVER_API_ROUTES } from './runtime/constants';
+import type { ModuleOptions } from './runtime/models';
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
