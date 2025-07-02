@@ -1,12 +1,9 @@
-import type { QueryParams } from '@content-island/api-client';
 import { defineEventHandler, getQuery, type H3Event } from 'h3';
+import { mapStringToQueryParams } from '../../../mappers';
 import { getContentIslandClient } from '../plugins/client';
 
 export default defineEventHandler(async (event: H3Event) => {
   const client = getContentIslandClient();
-  const { queryParams: encodedQueryParams } = getQuery(event);
-
-  const queryParams: QueryParams = JSON.parse(decodeURIComponent(encodedQueryParams as string));
-  console.log('Query Params:', queryParams);
-  return await client.getContent(queryParams);
+  const { queryParams } = getQuery(event);
+  return await client.getContent(mapStringToQueryParams(queryParams as string));
 });

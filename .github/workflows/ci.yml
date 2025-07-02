@@ -1,0 +1,21 @@
+name: Continuos Integration workflow
+
+on: pull_request
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.x
+
+      - name: Install
+        run: npm ci
+
+      - name: Tests
+        run: npm test
