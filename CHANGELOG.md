@@ -1,5 +1,11 @@
 # @content-island/nuxt
 
+## 0.2.0
+
+### Minor Changes
+
+- f5c6b54: Client-Side Rendering Support: Added comprehensive client-side rendering capabilities, enabling Content Island queries in SPA and Hybrid rendering modes.
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,23 +1,28 @@
-import { defineNuxtPlugin, useRuntimeConfig } from '#app';
-import { createClient } from '@content-island/api-client';
-import type { ModuleOptions } from '../models';
+import { defineNuxtPlugin } from '#app';
+import type { ApiClient, QueryParams } from '@content-island/api-client';
+import { SERVER_API_ROUTES } from './constants';
+import { mapQueryParamsToString } from './mappers';
+import type { $FetchOptions } from './models';
+
+const fetchContentIsland = async (path: string, queryParams?: QueryParams): Promise<any> => {
+  const options: $FetchOptions = queryParams
+    ? { query: { queryParams: mapQueryParamsToString(queryParams) } }
+    : undefined;
+  return await $fetch(path, options);
+};
 
 export default defineNuxtPlugin(() => {
-  const config = useRuntimeConfig();
-  const options = config.contentIsland as ModuleOptions;
-  if (!options?.accessToken) {
-    console.error(
-      'Content Island token is not provided. Please set the' +
-        ' CONTENT_ISLAND_ACCESS_TOKEN environment variable in a `.env` file' +
-        ' in the root of your project OR add it in the' +
-        ' nuxt.config file under the `contentIsland.accessToken` option.'
-    );
-  }
-  const client = createClient(options);
+  const proxyClient: ApiClient = {
+    getContent: async queryParams => await fetchContentIsland(SERVER_API_ROUTES.CONTENT, queryParams),
+    getRawContent: async queryParams => await fetchContentIsland(SERVER_API_ROUTES.RAW_CONTENT, queryParams),
+    getContentList: async queryParams => await fetchContentIsland(SERVER_API_ROUTES.CONTENT_LIST, queryParams),
+    getRawContentList: async queryParams => await fetchContentIsland(SERVER_API_ROUTES.RAW_CONTENT_LIST, queryParams),
+    getProject: async () => await fetchContentIsland(SERVER_API_ROUTES.PROJECT),
+  };
 
   return {
     provide: {
-      contentIsland: client,
+      contentIsland: proxyClient,
     },
   };
 });
