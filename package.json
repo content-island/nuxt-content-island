@@ -13,7 +13,7 @@
   "types": "./dist/types.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/types.d.*",
+      "types": "./dist/types.d.mts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -29,6 +29,7 @@
     "start": "npm run start:playground",
     "start:playground": "nuxi dev playground",
     "build": "nuxt-module-build build",
+    "test": "vitest",
     "changeset": "changeset",
     "publish-packages": "changeset publish",
     "prelocal:publish": "npm run build && cd ./local-npm-registry && npm start",
@@ -49,6 +50,7 @@
     "prettier": "^3.5.3",
     "pretty-quick": "^4.2.2",
     "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
     "vue-tsc": "^2.2.10"
   },
   "lint-staged": {

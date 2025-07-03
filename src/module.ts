@@ -1,5 +1,6 @@
 import { addPlugin, addServerHandler, createResolver, defineNuxtModule } from '@nuxt/kit';
-import type { ModuleOptions } from './models';
+import { SERVER_API_PATHS, SERVER_API_ROUTES } from './runtime/constants';
+import type { ModuleOptions } from './runtime/models';
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -19,16 +20,24 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Register server handlers
     addServerHandler({
-      route: '/api/__content_island/content',
-      handler: resolve('./runtime/server/api/content.get'),
+      route: SERVER_API_ROUTES.CONTENT,
+      handler: resolve(SERVER_API_PATHS.CONTENT),
     });
     addServerHandler({
-      route: '/api/__content_island/contentlist',
-      handler: resolve('./runtime/server/api/contentlist.get'),
+      route: SERVER_API_ROUTES.RAW_CONTENT,
+      handler: resolve(SERVER_API_PATHS.RAW_CONTENT),
     });
     addServerHandler({
-      route: '/api/__content_island/project',
-      handler: resolve('./runtime/server/api/project.get'),
+      route: SERVER_API_ROUTES.CONTENT_LIST,
+      handler: resolve(SERVER_API_PATHS.CONTENT_LIST),
+    });
+    addServerHandler({
+      route: SERVER_API_ROUTES.RAW_CONTENT_LIST,
+      handler: resolve(SERVER_API_PATHS.RAW_CONTENT_LIST),
+    });
+    addServerHandler({
+      route: SERVER_API_ROUTES.PROJECT,
+      handler: resolve(SERVER_API_PATHS.PROJECT),
     });
 
     // Register plugin that adds the $contentIsland client to the Nuxt app
