@@ -1,5 +1,11 @@
 # @content-island/nuxt
 
+## 0.2.2
+
+### Patch Changes
+
+- ac90e9c: No changes
+
 ## 0.2.1
 
 ### Patch Changes
