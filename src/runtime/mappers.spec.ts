@@ -1,8 +1,14 @@
-import type { QueryParams } from '@content-island/api-client';
+import type { ContentQueryParams } from '@content-island/api-client';
 import { mapQueryParamsToString, mapStringToQueryParams } from './mappers';
 
+interface Post {
+  id: string;
+  language: 'en';
+  slug: string;
+}
+
 describe('mapQueryParamsToString', () => {
-  it.each<{ queryParams: QueryParams | undefined | null }>([
+  it.each<{ queryParams: any }>([
     {
       queryParams: undefined,
     },
@@ -23,7 +29,7 @@ describe('mapQueryParamsToString', () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it.each<{ queryParams: QueryParams; expectedResult: string }>([
+  it.each<{ queryParams: ContentQueryParams<Post>; expectedResult: string }>([
     {
       queryParams: {
         contentType: 'post',
@@ -97,7 +103,7 @@ describe('mapStringToQueryParams', () => {
     expect(result).toEqual({});
   });
 
-  it.each<{ queryString: string; expectedResult: QueryParams }>([
+  it.each<{ queryString: string; expectedResult: ContentQueryParams<Post> }>([
     {
       queryString: '%7B%22contentType%22%3A%22post%22%7D',
       expectedResult: { contentType: 'post' },
