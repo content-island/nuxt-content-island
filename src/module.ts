@@ -36,6 +36,10 @@ export default defineNuxtModule<ModuleOptions>({
       handler: resolve(SERVER_API_PATHS.RAW_CONTENT_LIST),
     });
     addServerHandler({
+      route: SERVER_API_ROUTES.CONTENT_LIST_SIZE,
+      handler: resolve(SERVER_API_PATHS.CONTENT_LIST_SIZE),
+    });
+    addServerHandler({
       route: SERVER_API_ROUTES.PROJECT,
       handler: resolve(SERVER_API_PATHS.PROJECT),
     });

@@ -6,5 +6,5 @@ import { getContentIslandClient } from '../plugins/client';
 export default defineEventHandler(async (event: H3Event) => {
   const client = getContentIslandClient();
   const { queryParams } = getQuery(event);
-  return await client.getContentList(mapStringToQueryParams<ContentListQueryParams>(queryParams as string));
+  return await client.getContentListSize(mapStringToQueryParams<ContentListQueryParams>(queryParams as string));
 });
