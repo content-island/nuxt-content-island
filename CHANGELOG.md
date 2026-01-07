@@ -1,5 +1,11 @@
 # @content-island/nuxt
 
+## 0.2.1
+
+### Patch Changes
+
+- a553afb: Migrate to @content-island/api-client@0.16
+
 ## 0.2.0
 
 ### Minor Changes
@@ -11,7 +17,6 @@
 ### Minor Changes
 
 - 1e09722: Initial Release
-
   - Description:
 
     The Nuxt Content Island Module provides a seamless integration between your Nuxt application and the [Content Island API](https://contentisland.net/). This module simplifies fetching and managing content stored in Content Island, allowing you to focus on crafting rich and dynamic user experiences without the hassle of complex backend integrations.
