@@ -5,6 +5,7 @@ export const SERVER_API_ROUTES = {
   RAW_CONTENT: `${BASE_API_ROUTE}/raw-content`,
   CONTENT_LIST: `${BASE_API_ROUTE}/content-list`,
   RAW_CONTENT_LIST: `${BASE_API_ROUTE}/raw-content-list`,
+  CONTENT_LIST_SIZE: `${BASE_API_ROUTE}/content-list-size`,
   PROJECT: `${BASE_API_ROUTE}/project`,
 };
 
@@ -15,5 +16,6 @@ export const SERVER_API_PATHS = {
   RAW_CONTENT: `${BASE_API_PATH}/raw-content.get`,
   CONTENT_LIST: `${BASE_API_PATH}/content-list.get`,
   RAW_CONTENT_LIST: `${BASE_API_PATH}/raw-content-list.get`,
+  CONTENT_LIST_SIZE: `${BASE_API_PATH}/content-list-size.get`,
   PROJECT: `${BASE_API_PATH}/project.get`,
 };
